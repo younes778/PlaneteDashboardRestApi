@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,10 +55,12 @@ public class SalesController {
 		ds.setPortNumber(AppData.DB_SERVER_PORT);
 		ds.setDatabaseName(dbName);
 
+		Logger logger = Logger.getLogger(AppData.APP_LOGGER);
+
 		try {
-			System.out.println("Connecting to SQL Server ... ");
+			logger.log(Level.INFO,"[DOCUMENT][GET][REQUEST] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
 			con = ds.getConnection();
-			System.out.println("Connected");
+			logger.log(Level.INFO,"[DOCUMENT][GET][CONNECTION SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
 			String sales_positive_request = "select doc_numero, doc_date, pcf_code,rep_code"
 					+ " from documents where doc_type = 'V' and ( (doc_stype = 'B' and doc_etat <> 'S') or doc_stype= 'F')   and doc_date between '"
 					+ dateFrom + "' and '" + dateTo + "'";
@@ -79,9 +83,11 @@ public class SalesController {
 								rs.getString(AppData.COLUMN_PCF_CODE), rs.getString(AppData.COLUMN_REP_CODE)));
 			}
 
+			logger.log(Level.INFO,"[DOCUMENT][GET][SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
+
 		} catch (Exception e) {
-			System.out.println("Something went wrong");
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"[DOCUMENT][GET][ERROR] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo+", error - "+e.getMessage());
+			return null;
 		} finally {
 			if (rs != null)
 				try {
@@ -130,10 +136,12 @@ public class SalesController {
 		ds.setPortNumber(AppData.DB_SERVER_PORT);
 		ds.setDatabaseName(dbName);
 
+		Logger logger = Logger.getLogger(AppData.APP_LOGGER);
+
 		try {
-			System.out.println("Connecting to SQL Server ... ");
+			logger.log(Level.INFO,"[DOCUMENT][UPDATE][REQUEST] : server - "+url+", database - "+dbName+", from - "+dateFrom);
 			con = ds.getConnection();
-			System.out.println("Connected");
+			logger.log(Level.INFO,"[DOCUMENT][UPDATE][CONNECTION SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom);
 			String sales_positive_request = "select doc_numero, doc_date, pcf_code,rep_code"
 					+ " from documents where doc_type = 'V' and ( (doc_stype = 'B' and doc_etat <> 'S') or doc_stype= 'F')   and doc_dtmaj > '"
 					+ dateFrom + " ' ";
@@ -155,10 +163,12 @@ public class SalesController {
 						new Document(rs.getString(AppData.COLUMN_DOC_NUMERO), "VN", rs.getDate(AppData.COLUMN_DOC_DATE),
 								rs.getString(AppData.COLUMN_PCF_CODE), rs.getString(AppData.COLUMN_REP_CODE)));
 			}
+			
+			logger.log(Level.INFO,"[DOCUMENT][UPDATE][SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom);
 
 		} catch (Exception e) {
-			System.out.println("Something went wrong");
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"[DOCUMENT][UPDATE][ERROR] : server - "+url+", database - "+dbName+", from - "+dateFrom+", error - "+e.getMessage());
+			return null;
 		} finally {
 			if (rs != null)
 				try {

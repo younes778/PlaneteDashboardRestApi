@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,11 +54,13 @@ public class RepresentantController {
 		ds.setServerName(url);
 		ds.setPortNumber(AppData.DB_SERVER_PORT);
 		ds.setDatabaseName(dbName);
+		
+		Logger logger = Logger.getLogger(AppData.APP_LOGGER);
 
 		try {
-			System.out.println("Connecting to SQL Server ... ");
+			logger.log(Level.INFO,"[REPRESENTANT][GET][REQUEST] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
 			con = ds.getConnection();
-			System.out.println("Connected");
+			logger.log(Level.INFO,"[REPRESENTANT][GET][CONNECTION SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
 			String personnels_request = " select rep_code, rep_nom, rep_prenom from representants where rep_code in( "
 					+ " select distinct rep_code from documents  "
 					+ " where doc_type in ('V','A') and doc_date between '" + dateFrom + "' and '" + dateTo + "' )";
@@ -68,10 +72,12 @@ public class RepresentantController {
 						rs.getString(AppData.COLUMN_REP_NOM), rs.getString(AppData.COLUMN_REP_PRENOM)));
 			}
 			rs.close();
+			
+			logger.log(Level.INFO,"[REPRESENTANT][GET][SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
 
 		} catch (Exception e) {
-			System.out.println("Something went wrong");
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"[REPRESENTANT][GET][ERROR] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo+", error - "+e.getMessage());
+			return null;
 		} finally {
 			if (rs != null)
 				try {
@@ -120,10 +126,13 @@ public class RepresentantController {
 		ds.setPortNumber(AppData.DB_SERVER_PORT);
 		ds.setDatabaseName(dbName);
 
+
+		Logger logger = Logger.getLogger(AppData.APP_LOGGER);
+
 		try {
-			System.out.println("Connecting to SQL Server ... ");
+			logger.log(Level.INFO,"[REPRESENTANT][UPDATE][REQUEST] : server - "+url+", database - "+dbName+", from - "+dateFrom);
 			con = ds.getConnection();
-			System.out.println("Connected");
+			logger.log(Level.INFO,"[REPRESENTANT][UPDATE][CONNECTION SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom);
 			String personnels_request = " select rep_code, rep_nom, rep_prenom from representants where rep_dtmaj > ' "
 					+ dateFrom + " ' ";
 
@@ -135,9 +144,11 @@ public class RepresentantController {
 			}
 			rs.close();
 
+			logger.log(Level.INFO,"[REPRESENTANT][UPDATE][SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom);
+
 		} catch (Exception e) {
-			System.out.println("Something went wrong");
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"[REPRESENTANT][UPDATE][ERROR] : server - "+url+", database - "+dbName+", from - "+dateFrom+", error - "+e.getMessage());
+			return null;
 		} finally {
 			if (rs != null)
 				try {

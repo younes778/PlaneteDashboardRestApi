@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,10 +56,12 @@ public class TiersController {
 		ds.setPortNumber(AppData.DB_SERVER_PORT);
 		ds.setDatabaseName(dbName);
 
+		Logger logger = Logger.getLogger(AppData.APP_LOGGER);
+
 		try {
-			System.out.println("Connecting to SQL Server ... ");
+			logger.log(Level.INFO,"[TIERS][GET][REQUEST] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
 			con = ds.getConnection();
-			System.out.println("Connected");
+			logger.log(Level.INFO,"[TIERS][GET][CONNECTION SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
 			String tiers_request = " select pcf_code, pcf_type, pcf_rs, pcf_rue, pcf_comp, pcf_cp, pcf_ville, pay_code, pcf_tel1, "
 					+ " pcf_tel2, pcf_fax, pcf_email, pcf_url, f.fat_lib from tiers t left join tiers_fam f on t.fat_code = f.fat_code where pcf_code in( "
 					+ " select pcf_code from documents " + " where doc_type in ('V','A') and doc_date between '"
@@ -78,10 +82,12 @@ public class TiersController {
 						rs.getString(AppData.COLUMN_PCF_URL), fam));
 			}
 			rs.close();
+			
+			logger.log(Level.INFO,"[TIERS][GET][SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
 
 		} catch (Exception e) {
-			System.out.println("Something went wrong");
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"[TIERS][GET][ERROR] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo+", error - "+e.getMessage());
+			return null;
 		} finally {
 			if (rs != null)
 				try {
@@ -131,10 +137,12 @@ public class TiersController {
 		ds.setPortNumber(AppData.DB_SERVER_PORT);
 		ds.setDatabaseName(dbName);
 
+		Logger logger = Logger.getLogger(AppData.APP_LOGGER);
+
 		try {
-			System.out.println("Connecting to SQL Server ... ");
+			logger.log(Level.INFO,"[TIERS][UPDATE][REQUEST] : server - "+url+", database - "+dbName+", from - "+dateFrom);
 			con = ds.getConnection();
-			System.out.println("Connected");
+			logger.log(Level.INFO,"[TIERS][UPDATE][CONNECTION SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom);
 			String tiers_request = " select pcf_code, pcf_type, pcf_rs, pcf_rue, pcf_comp, pcf_cp, pcf_ville, pay_code, pcf_tel1, "
 					+ " pcf_tel2, pcf_fax, pcf_email, pcf_url, f.fat_lib from tiers t left join tiers_fam f on t.fat_code = f.fat_code where pcf_dtmaj > ' "
 					+ dateFrom + " ' ";
@@ -154,10 +162,12 @@ public class TiersController {
 						rs.getString(AppData.COLUMN_PCF_URL), fam));
 			}
 			rs.close();
+			
+			logger.log(Level.INFO,"[TIERS][UPDATE][SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom);
 
 		} catch (Exception e) {
-			System.out.println("Something went wrong");
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"[TIERS][UPDATE][ERROR] : server - "+url+", database - "+dbName+", from - "+dateFrom+", error - "+e.getMessage());
+			return null;
 		} finally {
 			if (rs != null)
 				try {

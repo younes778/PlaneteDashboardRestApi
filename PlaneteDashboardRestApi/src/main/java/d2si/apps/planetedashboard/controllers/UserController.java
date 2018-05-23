@@ -1,8 +1,11 @@
 package d2si.apps.planetedashboard.controllers;
 
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,7 +37,7 @@ public class UserController {
 	 * @return true if user and password are correct, false else
 	 */
 	@RequestMapping("/user")
-	public boolean user(@RequestParam(value = AppData.FIELD_URL, defaultValue = "") String url,
+	public boolean check(@RequestParam(value = AppData.FIELD_URL, defaultValue = "") String url,
 			@RequestParam(value = AppData.FIELD_DB_NAME, defaultValue = "") String dbName,
 			@RequestParam(value = AppData.FIELD_DB_USER, defaultValue = "") String user,
 			@RequestParam(value = AppData.FIELD_DB_PASSWORD, defaultValue = "") String password) {
@@ -49,20 +52,22 @@ public class UserController {
 		ds.setServerName(url);
 		ds.setPortNumber(AppData.DB_SERVER_PORT);
 		ds.setDatabaseName(dbName);
+		
+		Logger logger = Logger.getLogger(AppData.APP_LOGGER);
 
 		try {
-			System.out.println("Connecting to SQL Server ... ");
+			logger.log(Level.INFO,"[USER][CHECK][REQUEST] : server - "+url+", database - "+dbName+", user - "+user+", password - "+password);
 			con = ds.getConnection();
-			System.out.println("Connected");
+			logger.log(Level.INFO,"[USER][CHECK][CONNECTION SUCESS] : server - "+url+", database - "+dbName+", user - "+user+", password - "+password);
 			String user_request = "select *" + " from users" + " where usr_login= '" + user + "' and usr_passwd='"
-					+ password + "'";
+					+ URLDecoder.decode(password, "UTF-8").replace("\n", "") + "'";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(user_request);
+			logger.log(Level.INFO,"[USER][CHECK][SUCESS] : server - "+url+", database - "+dbName+", user - "+user+", password - "+password);
 			return rs.next();
 
 		} catch (Exception e) {
-			System.out.println("Something went wrong");
-			e.printStackTrace();
+			logger.log(Level.INFO,"[USER][CHECK][ERROR] : server - "+url+", database - "+dbName+", user - "+user+", password - "+password+", error - "+e.getMessage());
 		} finally {
 			if (rs != null)
 				try {

@@ -9,6 +9,7 @@ public class AppData {
 	final public static int DB_SERVER_PORT = 1433;
 	final public static String DB_USER = "sa";
 	final public static String DB_PASSWORD = "dssi213dz";
+	final public static String APP_LOGGER = "PlaneteDashboard";
 
 	// Url fields
 	final public static String FIELD_URL = "url";

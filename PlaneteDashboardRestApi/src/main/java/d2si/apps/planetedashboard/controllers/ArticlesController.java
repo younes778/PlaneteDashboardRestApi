@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,11 +55,13 @@ public class ArticlesController {
 		ds.setServerName(url);
 		ds.setPortNumber(AppData.DB_SERVER_PORT);
 		ds.setDatabaseName(dbName);
+		
+		Logger logger = Logger.getLogger(AppData.APP_LOGGER);
 
 		try {
-			System.out.println("Connecting to SQL Server ... ");
+			logger.log(Level.INFO,"[ARTICLES][GET][REQUEST] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
 			con = ds.getConnection();
-			System.out.println("Connected");
+			logger.log(Level.INFO,"[ARTICLES][GET][CONNECTION SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
 			String articles_request = "select art_code, art_lib, f.far_lib from articles a left join art_fam f on a.far_code = f.far_code "
 					+ " where art_code in(" + " select art_code from lignes where doc_numero in( "
 					+ " select doc_numero from documents " + " where doc_type in ('V','A') and doc_date between '"
@@ -73,10 +77,11 @@ public class ArticlesController {
 						new Article(rs.getString(AppData.COLUMN_ART_CODE), rs.getString(AppData.COLUMN_ART_LIB), fam));
 			}
 			rs.close();
+			logger.log(Level.INFO,"[ARTICLES][GET][SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo);
 
 		} catch (Exception e) {
-			System.out.println("Something went wrong");
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"[ARTICLES][GET][ERROR] : server - "+url+", database - "+dbName+", from - "+dateFrom+", to - "+dateTo+", error - "+e.getMessage());
+			return null;
 		} finally {
 			if (rs != null)
 				try {
@@ -124,11 +129,13 @@ public class ArticlesController {
 		ds.setServerName(url);
 		ds.setPortNumber(AppData.DB_SERVER_PORT);
 		ds.setDatabaseName(dbName);
+		
+		Logger logger = Logger.getLogger(AppData.APP_LOGGER);
 
 		try {
-			System.out.println("Connecting to SQL Server ... ");
+			logger.log(Level.INFO,"[ARTICLES][UPDATE][REQUEST] : server - "+url+", database - "+dbName+", from - "+dateFrom);
 			con = ds.getConnection();
-			System.out.println("Connected");
+			logger.log(Level.INFO,"[ARTICLES][UPDATE][CONNECTION SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom);
 			String articles_request = "select art_code, art_lib, f.far_lib from articles a left join art_fam f on a.far_code = f.far_code "
 					+ " where art_dtmaj > ' " + dateFrom + " ' ";
 
@@ -142,10 +149,11 @@ public class ArticlesController {
 						new Article(rs.getString(AppData.COLUMN_ART_CODE), rs.getString(AppData.COLUMN_ART_LIB), fam));
 			}
 			rs.close();
+			logger.log(Level.INFO,"[ARTICLES][UPDATE][SUCESS] : server - "+url+", database - "+dbName+", from - "+dateFrom);
 
 		} catch (Exception e) {
-			System.out.println("Something went wrong");
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"[ARTICLES][UPDATE][ERROR] : server - "+url+", database - "+dbName+", from - "+dateFrom+", error - "+e.getMessage());
+			return null;
 		} finally {
 			if (rs != null)
 				try {
