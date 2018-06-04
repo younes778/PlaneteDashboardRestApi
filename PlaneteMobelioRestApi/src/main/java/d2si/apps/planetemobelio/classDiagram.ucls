@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="d2si.apps.planetedashboard" project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="55" width="227" x="703" y="31"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="2" language="java" name="d2si.apps.planetedashboard.Application" project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/Application.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="143" x="952" y="5"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="d2si.apps.planetedashboard.data.AppUtils" project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/data/AppUtils.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="105" width="207" x="17" y="8"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="d2si.apps.planetedashboard.data.Article" project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/data/Article.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="112" y="421"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="d2si.apps.planetedashboard.data.Document" project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/data/Document.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="269" width="174" x="509" y="275"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="d2si.apps.planetedashboard.data.Ligne" project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/data/Ligne.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="240" width="193" x="278" y="290"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="d2si.apps.planetedashboard.data.Representant" project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/data/Representant.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="265" width="163" x="931" y="273"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="d2si.apps.planetedashboard.data.Tiers" project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/data/Tiers.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="266" width="172" x="720" y="276"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="d2si.apps.planetedashboard.controllers.ArticlesController" 
+    project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/controllers/ArticlesController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="212" x="12" y="134"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="d2si.apps.planetedashboard.controllers.LignesController" 
+    project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/controllers/LignesController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="215" x="267" y="133"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="d2si.apps.planetedashboard.controllers.RepresentantController" 
+    project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/controllers/RepresentantController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="118" width="185" x="908" y="122"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="d2si.apps.planetedashboard.controllers.SalesController" 
+    project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/controllers/SalesController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="185" x="498" y="126"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="d2si.apps.planetedashboard.controllers.TiersController" 
+    project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/controllers/TiersController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="185" x="710" y="126"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="d2si.apps.planetedashboard.controllers.ServerDBController" 
+    project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/controllers/ServerDBController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="377" y="53"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="d2si.apps.planetedashboard.controllers.UserController" 
+    project="PlaneteDashboardRestApi" 
+    file="/PlaneteDashboardRestApi/src/main/java/d2si/apps/planetedashboard/controllers/UserController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="185" x="493" y="20"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="16">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="19">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="20" name="lignes">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="21" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="22">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="23" name="sales">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="24" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="25">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="26">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="27" name="articles">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="29">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="30" name="tiers">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="31" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="32">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="33" name="representants">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="34" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
